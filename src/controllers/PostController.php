@@ -63,7 +63,8 @@ class PostController extends Controller
             throw new \Exception("Post not created");
         }
 
-        return Response::success($postId);
+        $data = $this->postModel->find($postId);
+        return Response::success($data);
     }
     public function update()
     {
