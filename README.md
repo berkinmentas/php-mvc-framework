@@ -1,4 +1,4 @@
-# Virtara Task PHP MVC Projesi
+# PHP MVC Projesi
 
 Bu proje, basit bir MVC (Model-View-Controller) mimarisi kullanarak PHP ile geliştirilmiş temel bir web uygulaması örneğidir. Amaç, PHP'de basit bir framework yapısının nasıl kurulabileceğini ve temel CRUD (Oluşturma, Okuma, Güncelleme, Silme) işlemlerinin nasıl yönetilebileceğini göstermektir. Proje, gönderi (post) yönetimi üzerine odaklanmıştır ve basit API endpoint'leri sunar.
 
