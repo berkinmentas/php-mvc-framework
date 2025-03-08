@@ -100,5 +100,3 @@ Projede tanımlı rotalar ve işlevleri aşağıda listelenmiştir. Rotalar `con
     "message": "Post deleted successfully"
   }
   ```
-
-## Proje Yapısı
