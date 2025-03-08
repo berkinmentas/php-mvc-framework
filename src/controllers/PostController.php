@@ -65,4 +65,60 @@ class PostController extends Controller
 
         return Response::success($postId);
     }
+    public function update()
+    {
+        $id = $this->request->getParam('id');
+
+        if (!$id) {
+            throw new \Exception("Post ID required");
+        }
+
+        $data = $this->request->getBody();
+
+        if (!$data) {
+            throw new \Exception("Request body required");
+        }
+
+        $post = $this->postModel->find($id);
+
+        if (!$post) {
+            throw new \Exception("Post not found");
+        }
+
+        $result = $this->postModel->update($id, $data);
+
+        if (!$result) {
+            throw new \Exception("Post not updated");
+        }
+
+        return Response::success([
+            'id' => $id,
+            'message' => 'Post updated successfully'
+        ]);
+    }
+
+    public function destroy()
+    {
+        $id = $this->request->getParam('id');
+
+        if (!$id) {
+            throw new \Exception("Post ID required");
+        }
+
+        $post = $this->postModel->find($id);
+
+        if (!$post) {
+            throw new \Exception("Post not found");
+        }
+
+        $result = $this->postModel->delete($id);
+
+        if (!$result) {
+            throw new \Exception("Post not deleted");
+        }
+
+        return Response::success([
+            'message' => 'Post deleted successfully'
+        ]);
+    }
 }

@@ -38,4 +38,30 @@ abstract class Model
 
         return $this->db->insert($this->table, $filteredData);
     }
+    public function update($id, $data)
+    {
+        $setClause = '';
+        $params = [];
+
+        foreach ($data as $key => $value) {
+            if (!empty($setClause)) {
+                $setClause .= ', ';
+            }
+            $setClause .= "{$key} = :{$key}";
+            $params[$key] = $value;
+        }
+
+        $params['id'] = $id;
+
+        $sql = "UPDATE {$this->table} SET {$setClause} WHERE id = :id";
+
+        return $this->db->query($sql, $params)->rowCount() > 0;
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM {$this->table} WHERE id = :id";
+
+        return $this->db->query($sql, ['id' => $id])->rowCount() > 0;
+    }
 }

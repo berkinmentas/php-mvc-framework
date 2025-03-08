@@ -12,5 +12,6 @@ return [
     Route::get('/virtara-task/posts')->controller(PostController::class)->action('index')->middleware(RequestMiddleware::class)->init(),
     Route::get('/virtara-task/posts/{id}')->controller(PostController::class)->action('show')->middleware(RequestMiddleware::class)->init(),
     Route::post('/virtara-task/posts')->controller(PostController::class)->action('store')->middleware(RequestMiddleware::class)->init(),
-
+    Route::put('/virtara-task/posts/{id}')->controller(PostController::class)->action('update')->middleware(RequestMiddleware::class)->init(),
+    Route::delete('/virtara-task/posts/{id}')->controller(PostController::class)->action('destroy')->middleware(RequestMiddleware::class)->init(),
 ];
