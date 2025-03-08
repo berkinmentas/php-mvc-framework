@@ -17,6 +17,8 @@ class RouteMiddleware
 
                 $route->pathParameters = $parameters;
                 $request->route = &$route;
+                $request->params = $parameters;
+
                 return $route;
             }
         }
@@ -104,6 +106,7 @@ class RouteMiddleware
 
     public function validateRoute($request, $route)
     {
-        return $route->isInitialized();
+        return $route->isInitialized() && $route->method === $request->method;
+
     }
 }

@@ -14,6 +14,7 @@ class Request
     public $content;
     public $path;
     public $route;
+    public $params = [];
     public function __construct(){
         $this->server = $_SERVER;
         $this->method = $_SERVER['REQUEST_METHOD'];
@@ -26,4 +27,20 @@ class Request
         $this->content = isset($this->headers['Content-Type']) && $this->headers['Content-Type'] == "application/json" ? json_decode($this->body, true) : null;
         $this->path = str_replace($this->query, '', $this->uri);
     }
+
+    public function getParam($name, $default = null)
+    {
+        return $this->params[$name] ?? $default;
+    }
+
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    public function getBody()
+    {
+        return $this->content ?? $_POST;
+    }
+
 }

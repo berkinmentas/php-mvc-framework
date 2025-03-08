@@ -29,6 +29,13 @@ abstract class Model
 
     public function create($data)
     {
-        return $this->db->insert($this->table, $data);
+        $filteredData = [];
+        foreach ($this->fillable as $field) {
+            if (isset($data[$field])) {
+                $filteredData[$field] = $data[$field];
+            }
+        }
+
+        return $this->db->insert($this->table, $filteredData);
     }
 }
